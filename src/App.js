@@ -5,7 +5,7 @@ export class App extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
+                <Navbar title=" Github Profile Finder" icon="fab fa-github fa-2x"/>
             </div>
         )
     }
