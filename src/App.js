@@ -8,13 +8,16 @@ export class App extends Component {
     constructor(props){
         super(props);
         this.state = {
+            loading: false,
             users: []
         }
     }
     componentDidMount(){
+        this.setState({loading: true})
         axios.get("https://api.github.com/users")
         .then(res => this.setState({
-            users: res.data
+            users: res.data, 
+            loading: false
         }))
     }
     render() {
@@ -22,7 +25,7 @@ export class App extends Component {
             //React.Fragment is prevents the div element in the console from appearing
             <Fragment>
                 <Navbar title=" Github Profile Finder" icon="fab fa-github fa-2x"/>
-                <Users users={this.state.users}/>
+                <Users users = {this.state.users} loadingState = {this.state.loading}/>
             </Fragment>
         )
     }
