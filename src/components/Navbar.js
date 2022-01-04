@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
-export class Navbar extends React.Component {
+class Navbar extends Component {
     static defaultProps = {
         title: "Profile Finder",
         icon: "fab fa-github fa-2x"
