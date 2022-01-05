@@ -9,9 +9,11 @@ class Navbar extends Component {
     render() {
         return (
                 <nav className="navbar navbar-dark bg-primary">
-                    <a href="#" className="navbar-brand">
-                        <i className={this.props.icon}>{this.props.title}</i>
-                    </a>
+                    <div className="container">
+                        <a href="#" className="navbar-brand">
+                            <i className={this.props.icon}>{this.props.title}</i>
+                        </a>
+                    </div>
                 </nav>
         )
     }
