@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 class User extends Component {
     render() {
+        {/*Contents of a user card*/}
         const {avatar_url, html_url, login} = this.props.user;
         return (
             <div className="col-sm-6 col-md-4 col-lg-6">

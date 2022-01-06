@@ -4,6 +4,7 @@ import Loading from "./Loading"
 
 class Users extends Component {
     render() {
+        {/*Listing all users*/}
         if(this.props.loadingState){
             return <Loading/>
         }else{

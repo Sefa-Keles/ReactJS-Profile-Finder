@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import loading from "../static/loading.gif"
 
 export const Loading = () => {
     return (
-        <React.Fragment>
+        <Fragment>
             <img src={loading} alt="Loading..." style={{withh: "200px", display:"block", margin: "auto"}}/>
-        </React.Fragment>
+        </Fragment>
     )
 }
 

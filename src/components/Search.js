@@ -10,15 +10,23 @@ export class Search extends Component {
         }
     }
 
+    //The state of entering a character in the input
     inputOnChange(e){
         this.setState({
             keyword: e.target.value
         })
     }
+
+    //Status of submitting the form
     formOnSubmit(e){
         e.preventDefault();
-        this.props.searchUser(this.state.keyword);
-        this.setState({keyword: ""})
+        //Alert in case the input is submitted empty
+        if(this.state.keyword===""){
+            this.props.setAlert("Please Enter A Keyword!", "warning")
+        }else{
+            this.props.searchUser(this.state.keyword);
+            this.setState({keyword: ""})
+        }
     }
 
     
@@ -33,6 +41,7 @@ export class Search extends Component {
                         </div>
                     </div>
                 </form>
+                {/*Removing the clear button when the page is blank*/}
                 {this.props.showClearButton && <button className="btn btn-outline-danger btn-sm mt-2 w-100" onClick={this.props.clearUsers}><strong>CLEAR</strong></button>}
             </div>
         )
