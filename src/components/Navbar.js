@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 class Navbar extends Component {
     //Default variables in case of null
@@ -11,9 +12,16 @@ class Navbar extends Component {
         return (
                 <nav className="navbar navbar-dark bg-primary">
                     <div className="container">
-                        <a href="#" className="navbar-brand">
+                        <Link to="/" className="navbar-brand">
                             <i className={this.props.icon}>{this.props.title}</i>
-                        </a>
+                        </Link>
+                        <div>
+                            <ul className='navbar-nav ml-auto'>
+                                <li className='nav-item'>
+                                    <Link to="about" className="nav-link">About</Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
         )
