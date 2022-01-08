@@ -13,9 +13,11 @@ export class App extends Component {
         this.searchUser = this.searchUser.bind(this);
         this.clearUsers = this.clearUsers.bind(this);
         this.setAlert = this.setAlert.bind(this);
+        this.getUser = this.getUser.bind(this)
         this.state = {
             loading: false,
             users: [],
+            user: [],
             alert: null
         }
     }
@@ -25,6 +27,17 @@ export class App extends Component {
         axios.get(`https://api.github.com/search/users?q=${keyword}`)
         .then(res => this.setState({
             users: res.data.items, 
+            loading: false
+        }))
+    }
+
+    getUser(username){
+        this.setState({
+            loading:true
+        })
+        axios.get(`https://api.github.com/users/${username}`)
+        .then(res => this.setState({
+            user: res.data, 
             loading: false
         }))
     }
@@ -67,6 +80,9 @@ export class App extends Component {
                     }
                     />
                     <Route path="/about" component={About} />
+                    <Route path="/user/:login" render={props =>(
+                        <UserDetails {...props} getUser= {this.getUser}/>
+                    )} />
 
                     
                 </Switch>
