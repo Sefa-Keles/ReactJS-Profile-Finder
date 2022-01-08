@@ -5,6 +5,7 @@ import Users from "./components/Users";
 import Search from "./components/Search";
 import Alert from "./components/Alert";
 import About from "./components/About";
+import UserDetails from "./components/UserDetails";
 import axios from "axios";
 
 export class App extends Component {
@@ -13,11 +14,13 @@ export class App extends Component {
         this.searchUser = this.searchUser.bind(this);
         this.clearUsers = this.clearUsers.bind(this);
         this.setAlert = this.setAlert.bind(this);
-        this.getUser = this.getUser.bind(this)
+        this.getUser = this.getUser.bind(this);
+        this.getUserRepos = this.getUserRepos.bind(this);
         this.state = {
             loading: false,
             users: [],
-            user: [],
+            user: {},
+            repos: [],
             alert: null
         }
     }
@@ -38,6 +41,16 @@ export class App extends Component {
         axios.get(`https://api.github.com/users/${username}`)
         .then(res => this.setState({
             user: res.data, 
+            loading: false
+        }))
+    }
+    getUserRepos(username){
+        this.setState({
+            loading:true
+        })
+        axios.get(`https://api.github.com/users/${username}/repos`)
+        .then(res => this.setState({
+            repos: res.data, 
             loading: false
         }))
     }
@@ -81,10 +94,14 @@ export class App extends Component {
                     />
                     <Route path="/about" component={About} />
                     <Route path="/user/:login" render={props =>(
-                        <UserDetails {...props} getUser= {this.getUser}/>
+                        <UserDetails 
+                        {...props} 
+                        user = {this.state.user} 
+                        repos = {this.state.repos}
+                        getUserRepos = {this.getUserRepos}
+                        getUser = {this.getUser} 
+                        loadingState = {this.state.loading}/>
                     )} />
-
-                    
                 </Switch>
             </BrowserRouter>
         )
