@@ -1,11 +1,10 @@
 import React from 'react'
-import Repo from './Repo';
+import Repo from './Repo'
 
 const Repos = ({repos}) => {
-    return repos.map(repo => <Repo repo={repo} key={repo.id}/>)
+  return (
+    repos.map(repo => <Repo repo={repo} key={repo.id}/>)
+  )
 }
 
-export default Repos
-
-
-
+export default Repos;

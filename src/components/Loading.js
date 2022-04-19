@@ -1,12 +1,12 @@
 import React from 'react'
-import loading from "../static/loading.gif"
+import loadingGif from '../static/Cube-1s-200px.gif'
 
 const Loading = () => {
-    return (
-        <React.Fragment>
-            <img src={loading} alt="Loading..." style={{withh: "200px", display:"block", margin: "auto"}}/>
-        </React.Fragment>
-    )
+  return (
+    <>
+        <img src={`/${loadingGif}`} alt="Loading..." style={{width: "200px" , display:"block", margin:"auto"}}></img>   
+    </>
+  )
 }
 
 export default Loading;
